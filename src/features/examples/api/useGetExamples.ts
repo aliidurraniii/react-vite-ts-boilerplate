@@ -1,6 +1,7 @@
 import { useInvalidateQueries, useQuery } from "@libs/query-client";
 
 import { Example } from "./types";
+import useExampleQuery from "./useExampleQuery";
 
 type UseGetExamplesOptions = {
   id: string;
@@ -10,6 +11,9 @@ export const useGetExamples = (options: UseGetExamplesOptions) => {
   const { id } = options;
 
   const { invalidateQueries } = useInvalidateQueries();
+  const { todos } = useExampleQuery();
+
+  console.log({ todos });
 
   const queryKey = ["getExamples", { id }];
 
